@@ -45,13 +45,15 @@ class ReviewVerifierTest {
   }
 
   @RepeatedTest(5)
-  void shouldFailWhenRandomReviewQualityIsBad(@RandomReview String review) {
+  void shouldFailWhenRandomReviewQualityIsBad(@RandomReview String review) throws InterruptedException {
+    Thread.sleep(1000);
     var result = reviewVerifier.doesMeetQualityStandards(review);
     Assertions.assertFalse(result, "ReviewVerifier did not detect random review");
   }
 
   @Test
-  void shouldPassWhenReviewIsGood() {
+  void shouldPassWhenReviewIsGood() throws InterruptedException {
+    Thread.sleep(1000);
     var review = "I can totally recommend this book " +
       "who is interested in learning hwo to write Java code!";
 
